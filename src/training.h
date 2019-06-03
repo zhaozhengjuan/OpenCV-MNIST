@@ -61,8 +61,6 @@ string trainImage = "mnist_dataset/train-images.idx3-ubyte";
 string trainLabel = "mnist_dataset/train-labels.idx1-ubyte";
 string testImage = "mnist_dataset/t10k-images.idx3-ubyte";
 string testLabel = "mnist_dataset/t10k-labels.idx1-ubyte";
-//string testImage = "mnist_dataset/train-images.idx3-ubyte";
-//string testLabel = "mnist_dataset/train-labels.idx1-ubyte";
 
 //计时器
 double cost_time_;
@@ -83,6 +81,7 @@ public:
 
     void knnTrain();
     void testMnist();
+    void testMnistSVM();
     int reverseDigit(int num);
 };
 

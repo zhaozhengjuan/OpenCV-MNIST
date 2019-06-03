@@ -22,10 +22,6 @@ private slots:
 private:
     Ui::MainWindow ui;
     Training *train;
-    //计时器
-    double cost_time_;
-    clock_t start_time_;
-    clock_t end_time_;
 };
 
 #endif // MAINWINDOW_H
