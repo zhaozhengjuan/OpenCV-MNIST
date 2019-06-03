@@ -18,12 +18,21 @@ RCC_DIR = tmp/rcc
 UI_DIR = tmp/ui
 OBJECTS_DIR = tmp/obj
 
+unix:{
+INCLUDEPATH += /usr/include/opencv4/
+LIBS += \
+        -lopencv_core -lopencv_highgui -lopencv_videoio \
+        -lopencv_imgcodecs -lopencv_imgproc -lopencv_ml
+}
+
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+        training.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+        training.h
 
 FORMS += \
         mainwindow.ui

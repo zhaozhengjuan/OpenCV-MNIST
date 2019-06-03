@@ -12,11 +12,11 @@ Mat Training::readImages(int opt)
     Mat img;
     if(opt == 0){
         cout << "\n Training...";
-        file.open("D:/vcprojects/images/mnist/train-images.idx3-ubyte", ios::binary);
+        file.open("/home/jackey/GitHub/OpenCV-MNIST/data/train-images.idx3-ubyte", ios::binary);
     }
     else{
         cout << "\n Test...";
-        file.open("D:/vcprojects/images/mnist/t10k-images.idx3-ubyte", ios::binary);
+        file.open("/home/jackey/GitHub/OpenCV-MNIST/data/t10k-images.idx3-ubyte", ios::binary);
     }
     // check file
     if (!file.is_open()){
@@ -56,7 +56,7 @@ Mat Training::readImages(int opt)
            }
        }
        if (i < 100) {
-            imwrite(format("D:/vcprojects/images/mnist/images/digit_%d.png", i), digitImg);
+            imwrite(format("/home/jackey/GitHub/OpenCV-MNIST/data/images/mnist/images/digit_%d.png", i), digitImg);
        }
     }
     train_images.convertTo(train_images, CV_32FC1);
@@ -70,11 +70,11 @@ Mat Training::readLabels(int opt)
     Mat img;
     if(opt == 0){
         cout << "\n Training...";
-        file.open("D:/vcprojects/images/mnist/train-labels.idx1-ubyte");
+        file.open("/home/jackey/GitHub/OpenCV-MNIST/data/train-labels.idx1-ubyte");
     }
     else{
         cout << "\n Test...";
-        file.open("D:/vcprojects/images/mnist/t10k-labels.idx1-ubyte");
+        file.open("/home/jackey/GitHub/OpenCV-MNIST/data/t10k-labels.idx1-ubyte");
     }
      // check file
     if (!file.is_open()){
@@ -116,13 +116,13 @@ void Training::knnTrain()
     knn->setIsClassifier(true);
     Ptr<ml::TrainData> tdata = ml::TrainData::create(train_images, ml::ROW_SAMPLE, train_labels);
     knn->train(tdata);
-    knn->save("D:/vcprojects/images/mnist/knn_knowledge.yml");
+    knn->save("/home/jackey/GitHub/OpenCV-MNIST/data/knn_knowledge.yml");
 }
 
 void Training::testMnist()
 {
     //Ptr<ml::SVM> svm = Algorithm::load<ml::SVM>("D:/vcprojects/images/mnist/knn_knowledge.yml"); // SVM-POLY - 98%
-    Ptr<ml::KNearest> knn = Algorithm::load<ml::KNearest>("D:/vcprojects/images/mnist/knn_knowledge.yml"); // KNN - 97%
+    Ptr<ml::KNearest> knn = Algorithm::load<ml::KNearest>("/home/jackey/GitHub/OpenCV-MNIST/data/knn_knowledge.yml"); // KNN - 97%
     Mat train_images = readImages(1);
     Mat train_labels = readLabels(1);
     printf("\n read mnist test dataset successfully...\n");
